@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+
+<p id="demo"></p>
+<br>
+<button type="button">click</button>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("button").click(function(){
+		$.ajax({
+			url:"data.jsp",	// 행선지
+			type:"get",		// 방식
+			success:function(str){	//결과
+				// alert("성공")
+				//alert(str.trim());
+				
+				let json = JSON.parse(str.trim());	//파싱
+				alert(json);
+				
+				$("#demo").html(json.number+":"+json.name);	
+			},
+			error:function(){
+				
+			}
+		});
+	});
+});
+
+</script>
+
+
+</body>
+</html>
